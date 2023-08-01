@@ -573,3 +573,108 @@ for i in range(10):
     func()
 
 print(a)
+
+
+
+def operator(a,b):
+    add_var= a+b
+    subtract_var=a-b
+    multiply_var=a*b
+    divide_var=a/b
+    return add_var,subtract_var,multiply_var,divide_var
+
+a,b,c,d = operator(7,3)
+print(a,b,c,d)
+
+
+
+def add(a,b):
+    return a+b
+#일반적인 add() 메서드 사용
+print(add(3,7))
+
+#람다 표현식으로 구현한 add()메서드
+print((lambda a, b: a+b)(3,7))
+
+
+#람다 표현식-> 내장 함수에서 자주 사용되는 람다 함수 
+array=[('홍길동',50),('이순신',32),('아무개',74)]
+
+
+def my_key(x):
+    return x[1]
+
+print(sorted(array,key=my_key))
+print(sorted(array,key=lambda x: x[1]))
+
+#여러개의 리스트에 적용
+list1=[1,2,3,4,5]
+list2=[6,7,8,9,10]
+result= map(lambda a,b : a+b , list1, list2)
+print(list(result))
+
+
+#sum
+result=sum([1,2,3,4,5])
+print(result)
+
+#min() max()
+min_result= min(7,3,5,2)
+max_result= max(7,3,5,2)
+print(min_result,max_result)
+
+#eval()
+result = eval("(3+5)*7")
+print(result)
+
+#sorted()
+result = sorted([9,1,8,5,4])
+reverse_result=sorted([9,1,8,5,4],reverse=True)
+print(result)
+print(reverse_result)
+#sorted() with key
+array=[('홍길동',35),('이순신',75),('아무개',50)]
+result= sorted(array,key=lambda x: x[1], reverse=True)
+print(result)
+
+#조합-> 서로 다른 n개에서 순서에 상관 없이 서로 다른 r개를 선택하는것 
+ #-> 순서를 고려하지 않고 두개를 뽑는 경우 : 'AB' 'AC' 'BC'
+ 
+from itertools import combinations
+data=['A','B','C']
+result= list(combinations(data,2))
+print(result)
+
+
+#중복 순열과 중복 조합
+from itertools import product
+data=['A','B','C']  #데이터 준비
+result= list(product(data, repeat=2)) #2개를 뽑는 모든 순열 구하기(중복 허용)
+print(result)
+
+
+from itertools import combinations_with_replacement
+
+data= ['A','B','C']
+
+result= list(combinations_with_replacement(data,2))
+print(result)
+
+
+from  collections import Counter
+counter =Counter(['red','blue','red','green','blue','blue'])
+
+print(counter['blue']) #'blue'가 등장한 횟수 출력
+print(counter['green']) #'green'이 등장한 횟수출력
+print(dict(counter))  #사전 자료형으로 반환 
+
+import math
+#최소 공배수(LCM)를 구하는 함수
+def lcm(a,b):
+    return a * b // math.gcd (a,b)
+
+a= 21
+b= 14
+
+print(math.gcd(21,14)) #최대 공약수 (GCD)계산 
+print(lcm(21,14)) #최소 공배수(LCM)계산 
